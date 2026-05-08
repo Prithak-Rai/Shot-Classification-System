@@ -15,7 +15,6 @@ frame_id = 0
 frame_skip = 2
 next_id = 0
 
-# --- Persistent track memory ---
 tracks = {}
 
 MAX_MISSED_FRAMES = 10
