@@ -1,4 +1,5 @@
 # IMport All the Required Libraries
+import os
 import cv2
 import pickle
 from ultralytics import YOLO
@@ -18,7 +19,7 @@ class BallTracker:
     
     def detect_frames(self, frames, read_from_stub=False, stub_path=None):
         ball_detections = []
-        if read_from_stub and stub_path is not None:
+        if read_from_stub and stub_path is not None and os.path.isfile(stub_path):
             with open(stub_path, 'rb') as f:
                 ball_detections = pickle.load(f)
                 return ball_detections
@@ -26,6 +27,9 @@ class BallTracker:
             ball_dict = self.detect_frame(frame)
             ball_detections.append(ball_dict)
         if stub_path is not None:
+            d = os.path.dirname(stub_path)
+            if d:
+                os.makedirs(d, exist_ok=True)
             with open(stub_path, 'wb') as f:
                 pickle.dump(ball_detections, f)
         return ball_detections

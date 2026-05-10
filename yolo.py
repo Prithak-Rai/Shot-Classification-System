@@ -5,5 +5,5 @@ from ultralytics import YOLO
 model = YOLO("yolo12n.pt")
 
 # Predictions
-#results = model.predict(source="input/a.mp4", save=True)
-results = model.track(source="input/a.mp4", save=True, persist=True)
+#results = model.predict(source="input/sample_video.mp4", save=True)
+results = model.track(source="input/sample_video.mp4", save=True, persist=True)
