@@ -271,7 +271,6 @@ def classify_shot_type(p_cur, v_in, v_out, bbox, p_side):
             return "Backhand"  
         else:
             return "Forehand" if v_out[0] < 0 else "Backhand"
-
     # ── TOP players
     elif p_side == "top":
         if ball_on_screen_left:
